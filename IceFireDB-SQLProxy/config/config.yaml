@@ -1,0 +1,41 @@
+server:
+  addr: ":33306" # The port on which the proxy listens, mysql-server, supports direct connection of mysql-client
+
+debug:  # Control to enable debug mode
+  enable: true
+  port: 17878
+
+# mysql configurations for different access levels
+mysql:
+  admin:
+    addr: "127.0.0.1:3306"
+    user: "admin_user"
+    password: "admin_pass"
+    dbname: "exampledb"
+    minAlive: 1
+    maxAlive: 64
+    maxIdle: 4
+  readonly:
+    addr: "127.0.0.1:3306"
+    user: "readonly_user"
+    password: "readonly_pass"
+    dbname: "exampledb"
+    minAlive: 1
+    maxAlive: 64
+    maxIdle: 4
+
+# Tenant list
+userlist:
+  - user: host1
+    password: host1
+
+# p2p config for different access levels
+p2p:
+  enable: true
+  serviceDiscoveryId: "tanovo_sqlproxy_admin_service"
+  serviceCommandTopic: "tanovo_sqlproxy_command_topic"
+  adminTopic: "tanovo_sqlproxy_admin_topic"
+  readonlyTopic: "tanovo_sqlproxy_readonly_topic"
+  serviceDiscoverMode: "advertise"
+  nodeHostIp: "127.0.0.1"
+  nodeHostPort: 0
